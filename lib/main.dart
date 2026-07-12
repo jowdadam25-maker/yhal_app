@@ -1,20 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:yhla/app/app.dart';
+import 'package:yhla/app/bootstrap.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.red,
-        body: Center(
-          child: Text(
-            'THIS IS MY MAIN',
-            style: TextStyle(
-              fontSize: 32,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
+export 'package:yhla/app/app.dart';
+
+Future<void> main() async {
+  await bootstrap(() => const YhlaApp());
 }
