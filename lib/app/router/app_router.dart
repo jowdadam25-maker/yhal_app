@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yhla/app/router/route_names.dart';
 import 'package:yhla/features/authentication/presentation/pages/splash_page.dart';
+import 'package:yhla/features/onboarding/presentation/pages/onboarding_page.dart';
 
 final router = GoRouter(
   initialLocation: RouteNames.splash,
@@ -10,6 +11,20 @@ final router = GoRouter(
       path: RouteNames.splash,
       name: RouteNames.splash,
       builder: (context, state) => const SplashPage(),
+    ),
+    GoRoute(
+      path: RouteNames.onboarding,
+      name: RouteNames.onboarding,
+      builder: (context, state) => OnboardingPage(
+        onOnboardingComplete: () {
+          context.go(RouteNames.login);
+        },
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.login,
+      name: RouteNames.login,
+      builder: (context, state) => const _LoginPlaceholderPage(),
     ),
     GoRoute(
       path: RouteNames.welcome,
@@ -28,6 +43,17 @@ final router = GoRouter(
     ),
   ],
 );
+
+class _LoginPlaceholderPage extends StatelessWidget {
+  const _LoginPlaceholderPage();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(child: Text('Login Page (Placeholder)')),
+    );
+  }
+}
 
 class _WelcomePlaceholderPage extends StatelessWidget {
   const _WelcomePlaceholderPage();
